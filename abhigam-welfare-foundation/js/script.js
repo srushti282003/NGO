@@ -35,7 +35,17 @@
         ? '<i class="fa-solid fa-xmark"></i>'
         : '<i class="fa-solid fa-bars"></i>';
       document.body.style.overflow = o ? 'hidden' : '';
-    };
+      // Add close button handler
+    const closeBtn = $('.nav-close');
+    if (closeBtn) {
+      closeBtn.onclick = () => {
+        nav.classList.remove('open');
+        bg.setAttribute('aria-expanded', false);
+        bg.innerHTML = '<i class="fa-solid fa-bars"></i>';
+        document.body.style.overflow = '';
+      };
+    }
+  };
 
     // Close on nav link click
     $$('.nav a').forEach(a => a.onclick = () => {
