@@ -1,0 +1,178 @@
+/* ===========================
+   LOADER v3 — Premium Style
+   =========================== */
+#page-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: linear-gradient(135deg, #060f1e 0%, #0d2240 50%, #0a1930 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  transition: opacity .7s ease, visibility .7s ease;
+  overflow: hidden;
+}
+
+/* Animated background dots */
+#page-loader::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(232,150,31,.12) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(26,77,128,.2) 0%, transparent 50%);
+  animation: loaderBg 4s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+#page-loader::after {
+  content: '';
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  border: 1px solid rgba(232,150,31,.08);
+  animation: loaderRing 3s linear infinite;
+  pointer-events: none;
+}
+
+/* Logo ring wrapper */
+.loader-ring {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.loader-ring::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  border-top-color: #E8961F;
+  border-right-color: rgba(232,150,31,.4);
+  animation: loaderSpinRing 1.2s linear infinite;
+}
+.loader-ring::after {
+  content: '';
+  position: absolute;
+  inset: 8px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  border-bottom-color: rgba(232,150,31,.5);
+  animation: loaderSpinRing 1.8s linear infinite reverse;
+}
+
+.loader-logo {
+  width: 90px;
+  height: 90px;
+  background: rgba(255,255,255,.97);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow:
+    0 0 0 4px rgba(232,150,31,.2),
+    0 0 30px rgba(232,150,31,.25),
+    0 8px 32px rgba(0,0,0,.4);
+  animation: loaderPulse 2s ease-in-out infinite;
+  position: relative;
+  z-index: 1;
+}
+.loader-logo img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+}
+
+.loader-text {
+  color: rgba(255,255,255,.92);
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  animation: loaderFade 1.8s ease-in-out infinite alternate;
+  position: relative;
+  z-index: 1;
+}
+.loader-text::after {
+  content: '';
+  display: block;
+  width: 60%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #E8961F, transparent);
+  margin: 8px auto 0;
+  animation: loaderLine 1.8s ease-in-out infinite alternate;
+}
+
+.loader-tagline {
+  color: rgba(255,255,255,.45);
+  font-size: .72rem;
+  letter-spacing: .15em;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  text-transform: uppercase;
+  position: relative;
+  z-index: 1;
+  margin-top: -16px;
+}
+
+.loader-bar {
+  width: 200px;
+  height: 3px;
+  background: rgba(255,255,255,.1);
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+  border: 1px solid rgba(255,255,255,.08);
+}
+.loader-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #E8961F, #F5B441, #E8961F);
+  background-size: 200% 100%;
+  border-radius: 10px;
+  animation: loaderBarFill 1.8s ease-in-out forwards, loaderBarShimmer 1s linear infinite;
+}
+
+#page-loader.hide {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+@keyframes loaderSpinRing {
+  to { transform: rotate(360deg); }
+}
+@keyframes loaderPulse {
+  0%, 100% { box-shadow: 0 0 0 4px rgba(232,150,31,.2), 0 0 30px rgba(232,150,31,.25), 0 8px 32px rgba(0,0,0,.4); transform: scale(1); }
+  50% { box-shadow: 0 0 0 10px rgba(232,150,31,.08), 0 0 50px rgba(232,150,31,.4), 0 8px 40px rgba(0,0,0,.5); transform: scale(1.04); }
+}
+@keyframes loaderFade {
+  from { opacity: .6; transform: translateY(2px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes loaderLine {
+  from { width: 30%; opacity: .5; }
+  to   { width: 80%; opacity: 1; }
+}
+@keyframes loaderBarFill {
+  from { width: 0; }
+  to   { width: 100%; }
+}
+@keyframes loaderBarShimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+@keyframes loaderBg {
+  from { opacity: .6; }
+  to   { opacity: 1; }
+}
+@keyframes loaderRing {
+  to { transform: rotate(360deg) scale(1.1); }
+}

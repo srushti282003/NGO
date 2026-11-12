@@ -1,0 +1,173 @@
+/* ===========================
+   RESPONSIVE v2.0
+   Abhigam Welfare Foundation
+   =========================== */
+
+/* ===========================
+   TABLET (≤1024px)
+   =========================== */
+@media (max-width: 1024px) {
+  .c3 { grid-template-columns: repeat(2, 1fr); }
+  .c4 { grid-template-columns: repeat(2, 1fr); }
+  .fg { grid-template-columns: 1fr 1fr 1fr; }
+  .hg, .two { grid-template-columns: 1fr; }
+  .hg .hero-img { order: -1; }
+  .hero-img img { height: 360px; }
+  .stat-grid { grid-template-columns: repeat(2, 1fr); }
+  .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+  .logo-text { display: none; }
+  .logo img { height: 64px; }
+}
+
+/* ===========================
+   MOBILE NAV (≤900px)
+   =========================== */
+@media (max-width: 900px) {
+  .burger { display: flex; }
+
+  .nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: min(340px, 88%);
+    background: #fff;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 100px 24px 32px;
+    transform: translateX(100%);
+    transition: transform .38s cubic-bezier(.4,0,.2,1);
+    box-shadow: -12px 0 40px rgba(15,44,78,.18);
+    overflow-y: auto;
+    z-index: 599;
+    gap: 4px;
+  }
+  .nav.open { transform: translateX(0); }
+
+  /* Mobile nav overlay */
+  .nav.open::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: rgba(15,44,78,.4);
+    backdrop-filter: blur(2px);
+    z-index: -1;
+  }
+
+  .nav > a:not(.btn), .ddb {
+    width: 100%;
+    padding: 12px 16px;
+    border-radius: 10px;
+    font-size: 1rem;
+    justify-content: flex-start;
+  }
+  .nav > a.btn { width: 100%; text-align: center; justify-content: center; margin-top: 8px; }
+
+  /* Mobile dropdown */
+  .ddm {
+    position: static;
+    width: 100%;
+    box-shadow: none;
+    border: 0;
+    background: var(--lb);
+    border-radius: 10px;
+    display: none;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    padding: 8px;
+    margin-top: 4px;
+  }
+  .dd.open .ddm { display: block; }
+
+  .burger { position: relative; z-index: 601; }
+
+  /* Close button in nav */
+  .nav-close {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    background: var(--lb);
+    border: 0;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    font-size: 1.1rem;
+    cursor: pointer;
+    color: var(--n);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+/* ===========================
+   SMALL MOBILE (≤640px)
+   =========================== */
+@media (max-width: 640px) {
+  .c3, .c4, .fm, .fg { grid-template-columns: 1fr; }
+  .gallery-grid { grid-template-columns: 1fr; }
+  .stat-grid { grid-template-columns: repeat(2, 1fr); }
+
+  .s { padding: 60px 0; }
+  .sh { margin-bottom: 40px; }
+
+  .top .wrap a:nth-child(3) { display: none; }
+
+  .hero { padding: 50px 0 60px; }
+  .hero-img img { height: 260px; border-radius: 14px; }
+  .hero-badge { display: none; }
+
+  .logo img { height: 56px; }
+  .hdi { height: 72px; }
+
+  .btn { padding: 12px 22px; font-size: .88rem; }
+  .bs { gap: 10px; }
+
+  .pn { padding: 24px; }
+  .card { padding: 22px; }
+
+  .vid .real-img img { height: 240px; }
+  .fl { height: 56px; max-width: 100px; }
+
+  .cta { padding: 60px 0; }
+  .cta h2 { font-size: 1.7rem; }
+
+  /* Full column form */
+  .fm { padding: 24px; gap: 14px; }
+  .full { grid-column: 1; }
+
+  /* Gallery one column */
+  .gl .real-img { min-height: 200px; }
+  .gl .real-img img { height: 200px; }
+}
+
+/* ===========================
+   TINY (≤400px)
+   =========================== */
+@media (max-width: 400px) {
+  .wrap { padding: 0 16px; }
+  h1 { font-size: 1.8rem; }
+  h2 { font-size: 1.5rem; }
+  .logo img { height: 48px; }
+  .btn.sm { padding: 8px 14px; font-size: .82rem; }
+}
+
+/* ===========================
+   LARGE DESKTOP (≥1400px)
+   =========================== */
+@media (min-width: 1400px) {
+  .wrap { max-width: 1360px; }
+  .logo img { height: 80px; }
+  .hdi { height: 96px; }
+  .logo-title { font-size: 1.1rem; }
+}
+
+/* ===========================
+   PRINT
+   =========================== */
+@media print {
+  .top, .hd, .burger, .up, .lb, #page-loader { display: none !important; }
+  body { color: #000; }
+  a { color: #000; }
+}
